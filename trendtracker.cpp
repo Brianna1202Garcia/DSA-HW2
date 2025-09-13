@@ -15,7 +15,25 @@ using namespace std;
 		//
 		// Must run in O(n) time.
 		Trendtracker::Trendtracker(string filename) {
-            //
+            //i gotta open the file 
+			ifstream file(filename);
+			assert(file.is_open());
+
+			string line;
+			//read each line (loop)
+			while(getline(file,line)) {
+				//create an entry for each hashtag
+				Entry e;
+				e.hashtag = line;
+				e.pop = 0;
+				//store it 
+				E.push_back(e);
+			}
+
+			//initialize top trends with the empty first 3
+			for (int i = 0; i < 3 && i < E.size(); i++) {
+				S.push_back(i);
+			}
         }
 
 		// Return the number of hashtags in the Trendtracker.
@@ -46,7 +64,7 @@ using namespace std;
 		//
 		// Must run in O(1) time.
 		string Trendtracker::top_trend() {
-
+			return E[S[0]].hashtag;
         }
 
 		// Fills the provided vector with the 3 most-tweeted hashtags,
