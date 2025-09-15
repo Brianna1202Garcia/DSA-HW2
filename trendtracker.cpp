@@ -127,7 +127,7 @@ using namespace std;
 		//
 		// Must run in O(1) time.
 		string Trendtracker::top_trend() {
-			if (!S.size()) return;
+			if (S.size() == 0) return "";
 			return E[S[0]].hashtag;
         }
 
@@ -140,8 +140,7 @@ using namespace std;
 		// Must run in O(1) time.
 		void Trendtracker::top_three_trends(vector<string> &T) {
 			T.clear();
-			if (!S.size()) return;
-			
+			//if (!S.size()) return;
 			for (int i = 0; i < S.size(); i++) {
 				T.push_back(E[S[i]].hashtag);
 			}
