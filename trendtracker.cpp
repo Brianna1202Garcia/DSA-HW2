@@ -87,18 +87,22 @@ using namespace std;
 					switch(k) {
 						case 0 :
 						{
-
+							index1 = S[k];
+							S[k++] = found;
 						}
 						case 1 :
 						{
-
+							index2 = S[k];
+							S[k++] = index1;
 						}
 						case 2 :
 						{
-
+							S[k] = index2;
+							break;
 						}
 					}
 				}
+				break;
 
 				//Ternary operation
 				// if (x > y) then (x) else (y)
@@ -112,7 +116,10 @@ using namespace std;
 		//
 		// Must run in O(log(n)) time.
 		int Trendtracker::popularity(string name) {
+			int found = search(name);
+			if (found == -1) return -1;;
 
+			return E[found].pop;
         }
 
 		// Returns a most-tweeted hashtag.
