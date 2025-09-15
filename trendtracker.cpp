@@ -55,8 +55,8 @@ using namespace std;
 
 			// Update top trends
 			//Get top items
-			vector<string> T;
-			top_three_trends(T);
+			// vector<string> T;
+			// top_three_trends(T);
 
 			//Check if ht is here
 			int i = 0;
@@ -64,6 +64,7 @@ using namespace std;
 				if (E[S[i]].hashtag == ht) break;
 			}
 
+			
 			switch (i) {
 				
 				case 2 : {
@@ -80,9 +81,11 @@ using namespace std;
 				}
 				default: break;
 			} 
+			//when i is 3
+			if (i != 3) return;
 
 			for (int k = 0; k < S.size (); k++) {
-				if (found != S[k] ? E[S[k]].pop < E[found].pop : false) {
+				if (E[S[k]].pop < E[found].pop) {
 					int index1 = found, index2 = found;
 					switch(k) {
 						case 0 :
@@ -101,9 +104,8 @@ using namespace std;
 							break;
 						}
 					}
+					break;
 				}
-				break;
-
 				//Ternary operation
 				// if (x > y) then (x) else (y)
 				//x > y ? x : y
